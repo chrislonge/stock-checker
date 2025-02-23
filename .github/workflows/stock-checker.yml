@@ -1,25 +1,25 @@
 name: Stock Checker CI
 
 on:
-    schedule:
-        - cron: "0 * * * *" # Run every hour, at minute 0
-    workflow_dispatch:      # Allows manual runs
+  schedule:               # Trigger a workflow at a scheduled time
+    - cron: "0 */2 * * *" # Run every 2 hours, at minute 0
+  workflow_dispatch:      # Allows manual runs
 
 jobs:
-    run-script:
-        runs-on: ubuntu-latest
+  run-script:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout repo
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-            - name: Set up Python
-              uses: actions/setup-python@v4
-              with:
-                python-version: "3.10"
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
 
-            - name: Install dependencies
-              run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-            - name: Run Stock Checker Script
-              run: python stock_checker.py
+      - name: Run Stock Checker Script
+        run: python stock_checker.py

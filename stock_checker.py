@@ -59,5 +59,4 @@ def check_stock():
     except requests.exceptions.RequestException as e:
         print(f"❌ Request error: {e}")
 
-# Run the function once to test
 check_stock()
